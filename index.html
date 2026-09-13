@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoadResQ — Roadside Assistance</title>
+<style>
+:root{--ink:#101828;--muted:#667085;--line:#eaecf0;--bg:#f8fafc;--brand:#f04438;--brand2:#d92d20;--card:#fff;--green:#12b76a}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+a{text-decoration:none;color:inherit}.nav{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:23px;letter-spacing:-1px}.logo span{color:var(--brand)}.navlinks{display:flex;gap:28px;color:#475467;font-size:14px}.navbtn{padding:11px 17px;border:1px solid #d0d5dd;border-radius:10px;font-weight:700;background:#fff}
+.hero{padding:72px 6% 45px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;max-width:1250px;margin:auto}.eyebrow{display:inline-flex;gap:8px;align-items:center;background:#fff0ef;color:var(--brand2);padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800}.dot{width:7px;height:7px;background:var(--green);border-radius:50%}.hero h1{font-size:58px;line-height:1.03;letter-spacing:-3px;margin:18px 0}.hero h1 span{color:var(--brand)}.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:610px}.actions{display:flex;gap:12px;margin-top:28px}.primary{background:var(--brand);color:#fff;border:0;border-radius:12px;padding:14px 20px;font-weight:800;cursor:pointer}.primary:hover{background:var(--brand2)}.secondary{background:#fff;border:1px solid #d0d5dd;border-radius:12px;padding:14px 20px;font-weight:800;cursor:pointer}
+.mock{background:#111827;border-radius:28px;padding:13px;box-shadow:0 25px 70px #10182822}.screen{background:#f8fafc;border-radius:19px;overflow:hidden}.top{background:#fff;padding:17px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.map{height:280px;background:linear-gradient(135deg,#dff3e7,#e8f0ff);position:relative;overflow:hidden}.road{position:absolute;background:#fff;border:10px solid #d7dee7;transform:rotate(-28deg);width:130%;height:70px;left:-15%;top:105px}.pin{position:absolute;left:48%;top:95px;background:var(--brand);color:#fff;width:45px;height:45px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;font-size:20px;box-shadow:0 8px 18px #f0443860}.pin b{transform:rotate(45deg)}.mechanic{position:absolute;right:22%;top:175px;background:#fff;padding:9px 12px;border-radius:12px;box-shadow:0 5px 20px #10182822;font-size:11px;font-weight:800}.panel{padding:17px}.status{display:flex;justify-content:space-between;margin-bottom:12px}.status strong{font-size:15px}.eta{color:var(--green);font-weight:800}.provider{background:#fff;border:1px solid var(--line);padding:12px;border-radius:13px;display:flex;align-items:center;gap:12px}.avatar{width:40px;height:40px;background:#ffe2df;border-radius:50%;display:grid;place-items:center;font-weight:900;color:var(--brand2)}.provider small{color:var(--muted)}.provider .rating{margin-left:auto;font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:1120px;margin:25px auto 70px;padding:0 6%}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:22px}.stat b{font-size:27px}.stat span{display:block;color:var(--muted);font-size:13px;margin-top:5px}
+.section{background:#fff;padding:70px 6%}.section h2{text-align:center;font-size:36px;letter-spacing:-1.5px;margin:0 0 10px}.sub{text-align:center;color:var(--muted);margin:0 auto 38px;max-width:650px}.cards{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}.icon{font-size:28px}.card h3{font-size:16px;margin:15px 0 7px}.card p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+.booking{max-width:1050px;margin:65px auto;padding:0 6%}.bookingbox{background:#101828;color:#fff;border-radius:25px;padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.bookingbox h2{font-size:34px;letter-spacing:-1px;margin:0 0 10px}.bookingbox p{color:#c8ced8;line-height:1.6}.form{background:#fff;color:var(--ink);border-radius:18px;padding:20px}.form label{display:block;font-size:12px;font-weight:800;margin:0 0 7px}.form select,.form input{width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:10px;margin-bottom:14px;background:#fff}.full{width:100%}
+footer{padding:28px 6%;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:45px}.hero h1{font-size:43px}.navlinks{display:none}.cards{grid-template-columns:1fr 1fr}.bookingbox{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.hero{gap:30px}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}.actions{flex-direction:column}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="logo">Road<span>ResQ</span></div>
+  <div class="navlinks"><a href="#services">Services</a><a href="#how">How it works</a><a href="#book">Book assistance</a></div>
+  <button class="navbtn" onclick="document.querySelector('#book').scrollIntoView({behavior:'smooth'})">Get Help</button>
+</nav>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> 24/7 roadside assistance</div>
+    <h1>Help is <span>closer</span> than you think.</h1>
+    <p>RoadResQ connects stranded drivers with trusted mechanics, towing partners, battery technicians and tyre specialists near them.</p>
+    <div class="actions">
+      <button class="primary" onclick="document.querySelector('#book').scrollIntoView({behavior:'smooth'})">Request Assistance →</button>
+      <button class="secondary" onclick="alert('Provider onboarding coming next.')">Become a Provider</button>
+    </div>
+  </div>
+  <div class="mock">
+    <div class="screen">
+      <div class="top"><strong>RoadResQ</strong><span>📍 Hyderabad</span></div>
+      <div class="map"><div class="road"></div><div class="pin"><b>●</b></div><div class="mechanic">🔧 Rahul • 6 min</div></div>
+      <div class="panel">
+        <div class="status"><strong>Mechanic is on the way</strong><span class="eta">ETA 6 min</span></div>
+        <div class="provider"><div class="avatar">R</div><div><strong>Rahul Motors</strong><br><small>Battery &amp; engine assistance</small></div><div class="rating">★ 4.8</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><b>24/7</b><span>Assistance availability</span></div>
+  <div class="stat"><b>&lt;10 min</b><span>Target provider response</span></div>
+  <div class="stat"><b>5+</b><span>Roadside service categories</span></div>
+</div>
+
+<section class="section" id="services">
+  <h2>Whatever went wrong, we've got you.</h2>
+  <p class="sub">Request the right help without searching for a mechanic yourself.</p>
+  <div class="cards">
+    <div class="card"><div class="icon">🔋</div><h3>Battery Assistance</h3><p>Jump-starts, battery checks and replacement support.</p></div>
+    <div class="card"><div class="icon">🛞</div><h3>Flat Tyre</h3><p>Get a nearby tyre technician dispatched to your location.</p></div>
+    <div class="card"><div class="icon">⛽</div><h3>Fuel Delivery</h3><p>Emergency fuel delivery when you're stranded.</p></div>
+    <div class="card"><div class="icon">🚙</div><h3>Towing</h3><p>Request a tow truck for vehicles that can't be driven.</p></div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="bookingbox">
+    <div>
+      <h2>Stranded? Request help now.</h2>
+      <p>Choose your vehicle and issue. In a full implementation, the platform would locate and match the best available provider using distance, ETA, rating and service expertise.</p>
+      <p>You'll receive the provider profile, estimated arrival time and live trip status.</p>
+    </div>
+    <div class="form">
+      <label>Vehicle</label>
+      <select id="vehicle"><option>Bike</option><option>Car</option></select>
+      <label>What's wrong?</label>
+      <select id="issue"><option>Battery problem</option><option>Flat tyre</option><option>Out of fuel</option><option>Engine problem</option><option>Towing required</option></select>
+      <label>Location</label>
+      <input id="location" placeholder="Enter your current location">
+      <button class="primary full" onclick="requestHelp()">Find nearby help</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div><strong>RoadResQ</strong> — Roadside assistance, reimagined.</div><div>Final Year Project Prototype • 2026</div></footer>
+
+<script>
+function requestHelp(){
+  const loc=document.getElementById('location').value.trim();
+  if(!loc){alert('Please enter your current location.');return;}
+  alert('Request created! In the full application, nearby providers would now be matched and notified.');
+}
+</script>
+</body>
+</html>

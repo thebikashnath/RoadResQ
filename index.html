@@ -29,13 +29,18 @@ footer{padding:28px 6%;background:#fff;border-top:1px solid var(--line);display:
 .suggestion span{display:block;color:#667085;font-size:11px;margin-top:2px}
 @media(max-width:520px){.location-row{flex-direction:column}.locate-btn{height:42px}}
 
+
+.help-btn{display:inline-flex;align-items:center;gap:8px;background:#f04438;color:#fff;border-color:#f04438;padding:12px 17px}
+.help-btn:hover{background:#d92d20;border-color:#d92d20}
+.help-btn .arrow{font-size:18px;line-height:1}
+
 </style>
 </head>
 <body>
 <nav class="nav">
   <div class="logo">Road<span>ResQ</span></div>
   <div class="navlinks"><a href="#services">Services</a><a href="#how">How it works</a><a href="#book">Book assistance</a></div>
-  <button class="navbtn" onclick="document.querySelector('#book').scrollIntoView({behavior:'smooth'})">Get Help</button>
+  <button class="navbtn help-btn" onclick="openHelpForm()"><span>📞</span> Get Help Now <span class="arrow">→</span></button>
 </nav>
 
 <main>
@@ -55,7 +60,7 @@ footer{padding:28px 6%;background:#fff;border-top:1px solid var(--line);display:
       <div class="map"><div class="road"></div><div class="pin"><b>●</b></div><div class="mechanic">🔧 Rahul • 6 min</div></div>
       <div class="panel">
         <div class="status"><strong>Mechanic is on the way</strong><span class="eta">ETA 6 min</span></div>
-        <div class="provider"><div class="avatar">R</div><div><strong>Rahul Motors</strong><br><small>Battery &amp; engine assistance</small></div><div class="rating">★ 4.8</div></div>
+        <div class="provider"><div class="avatar">R</div><div><strong>TVS Motors</strong><br><small>Battery &amp; engine assistance</small></div><div class="rating">★ 4.8</div></div>
       </div>
     </div>
   </div>
@@ -213,6 +218,14 @@ locateBtn.addEventListener('click', () => {
 document.addEventListener('click', event => {
   if(!event.target.closest('.location-wrap')) hideSuggestions();
 });
+
+function openHelpForm(){
+  const booking = document.querySelector('#book');
+  booking.scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(() => {
+    locationInput.focus();
+  }, 600);
+}
 
 function requestHelp(){
   const loc = locationInput.value.trim();

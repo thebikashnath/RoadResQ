@@ -116,7 +116,7 @@ http://localhost:8000
 
 ## ☁️ Deploy on Render
 
-This project is compatible with Render Static Sites.
+https://roadresq-rya7.onrender.com
 
 Recommended settings:
 
@@ -152,8 +152,6 @@ Publish Directory: .
 ## 🎓 Academic Project
 
 **Project:** RoadResQ — Car & Bike Breakdown Assistance Platform
-
-**Type:** B.Tech Final Year Project
 
 The goal is to demonstrate practical software engineering concepts including marketplace workflows, location-based matching, real-time communication, authentication, database design, APIs, payments, and scalable backend architecture.
 
